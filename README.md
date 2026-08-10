@@ -6,6 +6,8 @@ I build and operate **multi-agent systems** to run recurring business operations
 
 This repo documents the **methodology and architecture** I use. It contains no client data, no credentials, and no private CRM — only the reusable scaffolding.
 
+> **Proof, not just theory:** the [`workflows/`](workflows/) folder ships a **runnable n8n automation** (daily lead intake) — the unattended execution layer that runs the same principles as the agent pipelines.
+
 ---
 
 ## What this repo is
@@ -106,16 +108,21 @@ A daily ops pipeline I run in production. Target: **N qualified, fully-prepared 
 ```
 agent-orchestration/
 ├── README.md
-├── architecture/        # agent topology, session model, model routing
+├── architecture/        # agent topology, session model, model routing, diagrams
 ├── methodology/         # the rules above, expanded
 ├── pipelines/           # the anonymized 5-agent pipeline
 ├── prompts/             # generic, reusable agent prompt templates
-└── results/             # anonymized metrics the system delivers
+├── results/             # anonymized metrics the system delivers
+└── workflows/           # RUNNABLE n8n automation (unattended execution layer)
 ```
+
+## System diagram
+
+See [`architecture/DIAGRAM.md`](architecture/DIAGRAM.md) for the Mermaid topology (agent graph + unattended automation).
 
 ## Stack
 - Orchestration: Claude Code + Codex (parallel sessions)
-- No-code / glue: n8n
+- No-code / glue: n8n (see `workflows/`)
 - Knowledge base: structured markdown + database-style views
 - Host: Windows (GUI-first), units: metric
 
