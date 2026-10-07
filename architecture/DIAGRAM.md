@@ -42,4 +42,4 @@ flowchart LR
     D -->|new| W[Write to CRM]
 ```
 
-See [`workflows/lead-intake-n8n.json`](../workflows/lead-intake-n8n.json) for a runnable example.
+The maintained implementation lives in [cdi-agents](https://github.com/tommy100carats/cdi-agents).

@@ -1,12 +1,16 @@
 # Agent Orchestration — Multi-Agent Workflows for Ops & Revenue
 
+> **Archived (October 2026).** This repository is an early draft from August 2026 and is no longer maintained.
+> The system that actually runs in production, with tested code, CI and documentation, is
+> **[tommy100carats/cdi-agents](https://github.com/tommy100carats/cdi-agents)**.
+
 > How a non-developer runs a 5-agent daily pipeline in production — architecture, methodology, and reusable patterns.
 
-I build and operate **multi-agent systems** to run recurring business operations end-to-end: sourcing, enrichment, content generation, and quality audit. I'm not a coder — I'm the **architect and orchestrator**: I design the system, delegate execution to coding agents (Claude Code, Codex), and stay in the human-in-the-loop for judgment calls.
+I build and operate **multi-agent systems** to run recurring business operations end-to-end: sourcing, enrichment, content generation, and quality audit. I'm not a coder — I'm the **architect and orchestrator**: I design the system, delegate execution to coding agents (Claude Code), and stay in the human-in-the-loop for judgment calls.
 
 This repo documents the **methodology and architecture** I use. It contains no client data, no credentials, and no private CRM — only the reusable scaffolding.
 
-> **Proof, not just theory:** the [`workflows/`](workflows/) folder ships a **runnable n8n automation** (daily lead intake) — the unattended execution layer that runs the same principles as the agent pipelines.
+> The n8n workflow that used to live in `workflows/` was removed: it did not run as published. See `cdi-agents` for the maintained, tested version of these principles.
 
 ---
 
@@ -113,7 +117,6 @@ agent-orchestration/
 ├── pipelines/           # the anonymized 5-agent pipeline
 ├── prompts/             # generic, reusable agent prompt templates
 ├── results/             # anonymized metrics the system delivers
-└── workflows/           # RUNNABLE n8n automation (unattended execution layer)
 ```
 
 ## System diagram
@@ -121,8 +124,8 @@ agent-orchestration/
 See [`architecture/DIAGRAM.md`](architecture/DIAGRAM.md) for the Mermaid topology (agent graph + unattended automation).
 
 ## Stack
-- Orchestration: Claude Code + Codex (parallel sessions)
-- No-code / glue: n8n (see `workflows/`)
+- Orchestration: Claude Code (parallel sessions)
+- No-code / glue: n8n
 - Knowledge base: structured markdown + database-style views
 - Host: Windows (GUI-first), units: metric
 
